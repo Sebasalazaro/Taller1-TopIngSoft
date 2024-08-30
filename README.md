@@ -37,3 +37,34 @@ La vista playerCreation es más sencilla y centrada en su tarea principal, lo qu
 Documentación de los Cambios:
 Archivo factories.py: Añade la WeaponFactory para manejar la creación y obtención de armas.
 Archivo views.py: Actualiza la vista playerCreation para utilizar la WeaponFactory.
+
+## Actividad 5
+ Escoja alguno de los patrones de diseño 
+de Django vistos en clase (puede ser más de uno) y aplíquelo en alguna de las funcionalidades 
+de su proyecto original. Indique claramente el proceso de decisión detrás de la elección del 
+patrón y cómo mejora la implementación usando el patrón elegido. Documente bien los 
+cambios en el repositorio. Deben implementar por lo menos dos patrones, para dos partes 
+diferentes de la arquitectura (ejemplo: Vistas CRUD para controladores y Normalización para 
+Modelos). 
+
+### 1. Vistas Basadas en Clases (CBV)
+#### Descripción:
+Las vistas basadas en clases proporcionan una forma estructurada y reutilizable de manejar operaciones CRUD en Django.
+
+#### Implementación: 
+Se han convertido las vistas basadas en funciones en vistas basadas en clases para el modelo Weapon. Esto incluye la creación, actualización, eliminación y visualización de armas.
+
+#### Beneficios:
+* Modularidad: Las vistas están organizadas en clases, lo que facilita la extensión y el mantenimiento del código.
+* Reutilización: Las vistas pueden ser fácilmente reutilizadas y extendidas para otros modelos o funcionalidades.
+* 
+### 2. Formularios Normalizados (Forms)
+#### Descripción: 
+Los formularios en Django permiten una validación y manipulación eficiente de los datos de entrada del usuario.
+
+#### Implementación: 
+Se ha creado un formulario ModelForm para el modelo Weapon para manejar la creación y actualización de armas.
+
+#### Beneficios:
+* Simplicidad: ModelForm reduce la cantidad de código repetitivo y facilita la validación de datos.
+* Encapsulamiento: La lógica de los formularios está separada de las vistas, lo que mejora la organización del código.
