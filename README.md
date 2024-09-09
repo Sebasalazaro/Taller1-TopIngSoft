@@ -1,27 +1,38 @@
-## Actividad 2 (Revisión autocrítica):
-Mencionen aspectos de su proyecto, relacionados con los parámetros de calidad vistos en clase (Usabilidad, Compatibilidad, Rendimiento, Seguridad), resaltando aspectos que cumplan estos parámetros y aspectos a mejorar. Incluya aspectos donde pueda aplicar inversión
+# Taller 1: Tópicos de Ingenieria de Software
 
-### _Usabilidad:_
-Aspectos Positivos: ¿Qué tan fácil es para los usuarios entender y usar el sistema? ¿Hay una buena documentación o una interfaz amigable? Aspectos a Mejorar: ¿Existen partes del sistema que podrían ser más intuitivas? ¿Hay alguna mejora que podría hacer la experiencia del usuario más fluida? Archivos a Revisar: Archivos de plantilla (HTML, CSS), documentación del proyecto, comentarios en el código.
+## Revisión autocrítica
 
-### _Compatibilidad:_
-Aspectos Positivos: ¿El sistema funciona bien en diferentes navegadores, dispositivos o sistemas operativos? Aspectos a Mejorar: ¿Hay problemas de compatibilidad que deberían abordarse? ¿Qué cambios serían necesarios para mejorar la compatibilidad? Archivos a Revisar: Archivos CSS, archivos de configuración de navegadores.
+### Usabilidad
 
-### _Rendimiento:_
-Aspectos Positivos: ¿El sistema responde rápidamente y maneja la carga adecuadamente? Aspectos a Mejorar: ¿Hay cuellos de botella en el rendimiento? ¿Cómo se podría optimizar el rendimiento del sistema? Archivos a Revisar: Consultas a la base de datos, código de vistas, archivos de configuración de caché.
+Entre los aspectos positivos logramos notar que se requieren pocos clicks desde que se entra a la pagina principal hasta empezar una campaña, y que el proceso es bastante intuitivo, los pasos a seguir y donde hacer click es muy obvio. Al momento de empezar el juego es facil ubicar los diferentes elementos de la interfaz.
 
-### _Seguridad:_
-Aspectos Positivos: ¿El sistema tiene medidas adecuadas de seguridad, como cifrado de datos o autenticación de usuarios? Aspectos a Mejorar: ¿Existen vulnerabilidades conocidas? ¿Qué medidas de seguridad adicionales podrían implementarse? Archivos a Revisar: Archivos de configuración de seguridad, código de autenticación.
+Tiene una pagina dedicada a las diferentes acciones que se pueden realizar y muestra como se usan, tambien incluye los pasos necesarios e información requerida para hostear la aplicación.
 
-## Actividad 3 (Inversión de Dependencias):
-Escoja alguna clase de su proyecto y realice una inversión de dependencia según lo visto en clase. Documente bien los cambios en el repositorio.
+Una mejora al sistema se puede hacer al momento del usuario escribir los comandos, se puede agregar un sistema de ayudas donde el usuario pueda ver, basado en los elementos de la campaña, que comandos y que elementos puede usar sin necesidad de enviar el comando y leer el mensaje de error o moverse a la pagina de guias. En caso de que el usuario se cambie a la pagina de guias se podria añadir un botón que lo regrese a la campaña sin volver a la pagina principal y manualmente buscar la campaña ni usar la funcion de retorno de un navegador normal
+
+### Compatibilidad
+
+El sistema funciona y se ve igual en cualquier navegador de escritorio (que no esté obsoleto como Internet Explorer) y cualquier sistema operativo, siempre y cuando no sea mobil.
+
+Incluso en navegadores con JavaScript desabilitado la funcionalidad principal de la aplicacion se puede ejecutar, aunque sacrificando un poco la experiencia, como pantallas de carga, elementos de texto recortados por overflow.
+
+Un aspecto a mejorar es la implementacion de un diseño responsivo para usar la aplicacion desde un dispositivo de menor resolucion como un celular.
+
+### Rendimiento
+
+El sistema hace algunas llamadas redundantes a la base de datos, buscando varias veces elementos en la misma tabla, ademas, no usa metodos de multithreading por lo que al hacer peticiones, especialmente a las IAs generativas, el sistema es incapaz de atender grandes cantidades de usuarios.
+
+### Seguridad
+
+El sistema usa middleware de seguridad propio de DJango, especificamente contra CSRF y XFrame, ademas de el middleware se seguridad base. Se podria mejorar usando aplicando medidas contra el XSS, ya que aunque se usen templates de DJango que ayudan a prevenirlo, no se sanitizan las entradas de forma correcta y puede llevar a problemas.
+
+## Inversión de Dependencias
 
 Se hizo en models.py en la clase Weapon.
 Archivo repositories.py: Define la interfaz y la implementación para manejar la lógica de Weapon.
 Archivo models.py: Actualiza la clase Weapon para usar la interfaz IWeaponRepository.
 
-## Actividad 4
-Se hizo en el archivo views.py. Proceso de Decisión Elección del Patrón de Diseño:
+## Aplicación de patrón de diseño Python
 
 Patrón Factory: Elegimos el patrón Factory porque la vista playerCreation realiza consultas directas a la base de datos para obtener armas, lo que puede complicar la vista y hacerla menos reutilizable. Al utilizar una factory, encapsulamos la lógica de creación y obtención de armas en un solo lugar, lo que mejora la separación de preocupaciones y facilita la mantenibilidad del código. Mejoras Aportadas:
 
@@ -38,7 +49,7 @@ Documentación de los Cambios:
 Archivo factories.py: Añade la WeaponFactory para manejar la creación y obtención de armas.
 Archivo views.py: Actualiza la vista playerCreation para utilizar la WeaponFactory.
 
-## Actividad 5
+## Aplicación de patrón de diseño Django
  Escoja alguno de los patrones de diseño 
 de Django vistos en clase (puede ser más de uno) y aplíquelo en alguna de las funcionalidades 
 de su proyecto original. Indique claramente el proceso de decisión detrás de la elección del 
