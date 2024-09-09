@@ -1,0 +1,3 @@
+1. `pip install -r requirements.txt`
+
+2. Si se desea usar la funcionalidad de AI se debe llenar el archivo api_keys.env tomando como base api_keys.env.example
